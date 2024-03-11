@@ -45,11 +45,19 @@ console.log("computer: " + computerSelection);
 function playRound(userSelection, computerSelection) {
 // Check for tie: if userSelection is the same as computerSelection
     if (userSelection == computerSelection) {
-        return alert("you tied.")
+        return alert("Tie. You both selected: " + userSelection );
     }
 //      Display "You Tied" and userSelection == computerSelection
 // Check for win
+    else if (userSelection == "rock" && computerSelection == "scissors"
+        || userSelection == "paper" && computerSelection == "rock"
+        || userSelection == "scissors" && computerSelection == "paper") {
+            return alert("You won: " + userSelection + " beats " + computerSelection + "!!");
+    }
 //      Display "You Won" and UserSelection beats computerSelection
 // Since user did not tie or win, Display "You Lost" and ComputerSelection beats UserSelection
+    else return alert("You lost: "+ computerSelection + " beats " + userSelection + ".")
 // 
 }
+
+console.log(playRound(userSelection, computerSelection));
