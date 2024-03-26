@@ -1,18 +1,55 @@
 // CREATE a variable userScore and set value to 0
-let userScore = 0
+let userScore = 0;
 // CREATE a variable computerScore and set value to 0
-let computerScore = 0
+let computerScore = 0;
+// CREATE variables for HTML elements
+let container = document.querySelector("#container");
 
-playGame(5);
-declareWinner(userScore, computerScore);
+let userInput = "";
+
+container.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case 'rock':
+            userInput = target.id;
+            playRound(userInput, getComputerSelection());
+            break;
+        case 'paper':
+            userInput = target.id;
+            playRound(userInput, getComputerSelection());
+            break;
+        case 'scissors':
+            userInput = target.id;
+            playRound(userInput, getComputerSelection());
+            break;
+    };
+});
+
+//playGame(5);
+//declareWinner(userScore, computerScore);
 
 // CREATE a function playGame
-function playGame(rounds) {
+/* function playGame(rounds) {
     for (let i = 0; i < rounds; i++) {
         playRound(getUserSelection(), getComputerSelection());
         console.log(`Round ${i+1}:   You: ${userScore}   Computer: ${computerScore}`);
     }
-}
+} */
+
+function getUserSelection() {
+    // ASK User to choose "Rock" "Paper" or "Scissors"
+        let userInput = prompt("Choose 'Rock', 'Paper' or 'Scissors'").toLowerCase();
+    // CHECK that answer is valid and return "idiot" if not
+        if (userInput == "rock" || 
+            userInput == "paper" ||
+            userInput == "scissors") {
+            return userInput;
+        }
+            else {
+                return "idiot";
+        } ;
+    }
 
 // Declare the winner of the game
 function declareWinner(userScore, computerScore) {
@@ -65,7 +102,8 @@ function getComputerSelection() {
     }
 
 // CREATE a function getUserSelection
-function getUserSelection() {
+
+/* function getUserSelection() {
     // ASK User to choose "Rock" "Paper" or "Scissors"
         let userInput = prompt("Choose 'Rock', 'Paper' or 'Scissors'").toLowerCase();
     // CHECK that answer is valid and return "idiot" if not
@@ -77,4 +115,4 @@ function getUserSelection() {
             else {
                 return "idiot";
         } ;
-    }
+    } */
