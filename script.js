@@ -8,13 +8,24 @@ let ties = 0;
 const container = document.querySelector("#container");
 const results = document.querySelector("#results");
 const score = document.createElement("h4");
+const roundChoice = document.createElement("p");
 const roundResult = document.createElement("p");
+const winLoss = document.createElement("h1");
+
 
 //Show the score
 function showScore() {
     score.textContent = "User: " + userWins + "    Computer: " + computerWins + "    Ties: " + ties;
+    results.appendChild(roundChoice);
     results.appendChild(roundResult);
     results.appendChild(score);
+    victoryCheck();
+}
+
+function victoryCheck() {
+    if (userWins >= 5) winLoss.textContent = "VICTORY";
+    else if (computerWins >= 5) winLoss.textContent = "YOU DIED";
+    results.appendChild(winLoss);
 }
 
 
@@ -67,7 +78,7 @@ container.addEventListener('click', (event) => {
 // CREATE a function playRound with arguments userSelection and computerSelection
 function playRound(userSelection, computerSelection) {
     // Show user and computer selections in console
-    console.log("User: " + userSelection + "   Computer: " + computerSelection);
+    roundChoice.textContent = "User: " + userSelection + "   Computer: " + computerSelection;
 // Check for tie: if userSelection is the same as computerSelection
     if (userSelection == computerSelection) {
 //      Display "You Tied" and userSelection == computerSelection
